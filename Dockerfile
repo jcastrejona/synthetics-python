@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY test_general.py ./
 
-RUN apt update && apt install -y pip
+RUN sudo apt update && sudo apt-get install python3.6 && sudo apt install -y python-pip 
 RUN pip install keyboard
 RUN pip install selenium
 RUN pip install pytest
