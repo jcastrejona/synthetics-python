@@ -2,21 +2,27 @@ from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 import time 
 import keyboard
 # install keyboard and selenium using pip before running ******************************************************
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+chrome_options.binary_location = '/Applications/Google Chrome   Canary.app/Contents/MacOS/Google Chrome Canary'
 
 
 class TestGeneral:
   def setup_method(self):
     self.vars = {}
 
-    self.driver = webdriver.Chrome()
+    #self.driver = webdriver.Chrome()
+    self.driver = webdriver.Chrome(executable_path=os.path.abspath('chromedriver'), chrome_options=chrome_options)  
     self.driver.get("http://13.72.75.125/")
     self.driver.maximize_window()
     self.driver.implicitly_wait(2)
     self.driver.find_element_by_name("User").click()
-    self.driver.find_element_by_name("User").send_keys("marcos.zaragoza")
+    self.driver.find_element_by_name("User").send_keys("jose.castrejon")
     self.driver.find_element_by_name("Password").click()
     self.driver.find_element_by_name("Password").send_keys("admin")
     self.driver.find_element_by_xpath('//*[@id="ctc"]/div[2]/form/div[4]/button').click()
