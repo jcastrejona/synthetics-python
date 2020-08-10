@@ -1,3 +1,4 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
@@ -9,7 +10,7 @@ import keyboard
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
-chrome_options.binary_location = '/Applications/Google Chrome   Canary.app/Contents/MacOS/Google Chrome Canary'
+chrome_options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
 
 class TestGeneral:
@@ -17,7 +18,7 @@ class TestGeneral:
     self.vars = {}
 
     #self.driver = webdriver.Chrome()
-    self.driver = webdriver.Chrome(executable_path=os.path.abspath('chromedriver'), chrome_options=chrome_options)  
+    self.driver = webdriver.Chrome(chrome_options=chrome_options)  
     self.driver.get("http://13.72.75.125/")
     self.driver.maximize_window()
     self.driver.implicitly_wait(2)
