@@ -1,14 +1,18 @@
 FROM selenium/standalone-chrome
+LABEL maintainer="jose.castrejon@softtek.com"
 
-WORKDIR /usr/src/app
+EXPOSE 4444
 
-COPY test_general.py ./
+WORKDIR /home/seluser
 
-RUN sudo apt update && sudo apt-get install python3.6 && sudo apt install -y python-pip 
-RUN pip install keyboard
-RUN pip install selenium
-RUN pip install pytest
+COPY test_general.py .
 
-COPY . .
+RUN sudo apt-get update 
+RUN sudo apt-get install -y python3.6
 
-CMD [ "pytest", "./test_general.py"]
+RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo python
+
+RUN sudo pip install keyboard
+RUN sudo pip install selenium
+RUN sudo pip install pytest
+RUN pytest --version
