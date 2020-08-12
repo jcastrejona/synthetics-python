@@ -25,4 +25,3 @@ function shutdown {
 trap shutdown SIGTERM SIGINT
 wait ${SUPERVISOR_PID}
 
-pytest /home/seluser/test_general.py

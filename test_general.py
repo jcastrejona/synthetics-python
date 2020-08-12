@@ -21,7 +21,7 @@ class TestGeneral:
   def setup_method(self):
     self.vars = {}
 
-    self.driver = webdriver.Remote(command_executor="http://192.168.99.100:4444/wd/hub", desired_capabilities= DesiredCapabilities.CHROME)
+    self.driver = webdriver.Remote(command_executor="http://localhost:4444/wd/hub", desired_capabilities= DesiredCapabilities.CHROME)
     #self.driver = webdriver.Chrome(chrome_options=chrome_options)  
     self.driver.get("https://coelens.digitalcoedevops.com/")
     self.driver.maximize_window()
